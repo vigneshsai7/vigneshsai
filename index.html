@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vignesh — SOC Analyst & CTI Researcher</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#FAF9F6;--text:#1a1a1a;--muted:#6b6b6b;--link:#1a1a1a;--border:#e5e0d8;--rust:#8B3A2E;--selection:#A8D8EA;}
+  [data-theme="rust"]{--bg:#8B3A2E;--text:#FFF5EB;--muted:#E8CFC5;--link:#FFF5EB;--border:#6d2e24;}
+  *{margin:0;padding:0;box-sizing:border-box}
+  ::selection{background:var(--selection);color:#0f172a} ::-moz-selection{background:var(--selection);color:#0f172a}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.75;transition:background .35s,color .35s;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:680px;margin:0 auto;padding:84px 24px 60px}
+  .top{display:flex;align-items:center;gap:20px;margin-bottom:42px}
+  .avatar-stack{width:88px;height:88px;position:relative;flex-shrink:0;border-radius:18px;overflow:hidden;background:#e8e2d9;box-shadow:0 2px 12px rgba(0,0,0,0.1);cursor:pointer}
+  [data-theme="rust"] .avatar-stack{background:#5a231c}
+  .avatar-stack img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity .7s ease,transform .7s ease}
+  .avatar-stack img.active{opacity:1;transform:scale(1)}
+  .dots{position:absolute;bottom:5px;left:0;right:0;display:flex;justify-content:center;gap:4px;z-index:2}
+  .dots span{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.6);transition:all .3s}
+  .dots span.on{background:white;width:12px}
+  h1{font-family:'Instrument Serif',serif;font-size:52px;font-weight:400;font-style:italic;letter-spacing:-0.02em;line-height:1}
+  .subtitle{font-size:14.5px;color:var(--muted);letter-spacing:0.02em;margin-top:6px;text-transform:lowercase}
+  p{font-size:16.5px;margin-bottom:22px;color:var(--text)}
+  a{color:var(--link);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,0,0,0.18);padding-bottom:1px}
+  [data-theme="rust"] a{border-bottom-color:rgba(255,255,255,0.35)}
+  .footer-nav{margin-top:48px;display:flex;flex-wrap:wrap;gap:22px;font-size:14.5px}
+  .footer-nav a{font-weight:500;border-bottom:none;text-transform:lowercase}
+  .location{margin-top:56px;font-size:14px;color:var(--muted);display:flex;gap:8px;align-items:center}
+  .theme-toggle{position:fixed;top:22px;right:22px;width:58px;height:32px;background:#fff;border:1px solid var(--border);border-radius:999px;cursor:pointer;display:flex;align-items:center;padding:3px;transition:.3s;z-index:50}
+  [data-theme="rust"] .theme-toggle{background:#5a231c;border-color:#5a231c}
+  .knob{width:26px;height:26px;background:#fff;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,0.18);transform:translateX(0);transition:transform .32s cubic-bezier(.4,0,.2,1);display:grid;place-items:center}
+  [data-theme="rust"] .knob{transform:translateX(24px);background:#FFF5EB}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--rust)}
+  @media(max-width:600px){h1{font-size:42px}.wrap{padding-top:64px}.avatar-stack{width:78px;height:78px}}
+</style>
+</head>
+<body data-theme="light">
+<button class="theme-toggle" id="toggle"><span class="knob"><span class="dot"></span></span></button>
+<div class="wrap">
+  <div class="top">
+    <div class="avatar-stack" id="avatarStack">
+      <img src="images/avatar1.jpg" alt="" class="active">
+      <img src="images/avatar2.jpg" alt="">
+      <img src="images/avatar3.png" alt="">
+      <div class="dots" id="dots"></div>
+    </div>
+    <div><h1>Vignesh</h1><div class="subtitle">soc analyst & cyber threat intelligence researcher</div></div>
+  </div>
+  <p>Hi, I'm a <span id="age">21</span> year old SOC Analyst, cybersecurity researcher, CTF player, and curious mind deeply interested in open-source, cybersecurity, and digital investigations. Focused on CTI — Cyber Threat Intelligence.</p>
+  <p>Hands-on SOC experience in security monitoring, alert triage, and incident response using Microsoft Sentinel and Microsoft Defender XDR, Cortex XDR, XSIAM, XSOAR environments.</p>
+  <p>Outside of studying, I'm usually writing code, exploring security challenges, reading, listening to music and making music. I've worked at startups and most of my projects are available on <a href="https://github.com" target="_blank">GitHub</a>.</p>
+  <p>I'm open to new roles, collaborations, and opportunities. You can see my <a href="#">resume</a>, <a href="#">find me elsewhere</a>, or reach out at <a href="mailto:saivigggu@proton.me">saivigggu@proton.me</a>.</p>
+  <p>If you're here, it means you know something about me. Thank you for taking the time to have a look at my profile.</p>
+  <div class="footer-nav"><a href="#">blog</a><a href="#">notes</a><a href="#">press</a><a href="https://github.com" target="_blank">github</a><a href="#">twitter</a><a href="mailto:saivigggu@proton.me">email</a></div>
+  <div class="location"><span>Hyderabad, India</span><span>·</span><span id="time">--:--</span></div>
+</div>
+<script>
+const btn=document.getElementById('toggle');const body=document.body;
+const saved=localStorage.getItem('theme'); if(saved) body.setAttribute('data-theme',saved);
+btn.onclick=()=>{const cur=body.getAttribute('data-theme');const next=cur==='light'?'rust':'light';body.setAttribute('data-theme',next);localStorage.setItem('theme',next);};
+function tick(){const now=new Date();document.getElementById('time').textContent=now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',hour12:true,timeZone:'Asia/Kolkata'})+' IST';}
+tick(); setInterval(tick,60000);
+// Auto age from hidden DOB 17-02-2005 - only age shown, DOB never displayed
+function getAge(){
+  const dob = new Date(2005, 1, 17);
+  const now = new Date();
+  let age = now.getFullYear() - dob.getFullYear();
+  const m = now.getMonth() - dob.getMonth();
+  if (m < 0 || (m === 0 && now.getDate() < dob.getDate())) age--;
+  return age;
+}
+document.getElementById('age').textContent = getAge();
+const imgs=document.querySelectorAll('#avatarStack img');const dotsWrap=document.getElementById('dots');let idx=0;
+imgs.forEach((_,i)=>{const d=document.createElement('span'); if(i===0) d.classList.add('on'); dotsWrap.appendChild(d);});
+const dots=dotsWrap.querySelectorAll('span');
+function nextSlide(){imgs[idx].classList.remove('active');dots[idx].classList.remove('on');idx=(idx+1)%imgs.length;imgs[idx].classList.add('active');dots[idx].classList.add('on');}
+setInterval(nextSlide, 3500);
+document.getElementById('avatarStack').onclick=nextSlide;
+</script>
+</body>
+</html>
