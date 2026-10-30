@@ -5,103 +5,142 @@
 <title>Work — Vignesh | AppSec Internship</title>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#0A0A0B;--surface:#111113;--surface-2:#1a1a1d;--border:#222227;--border-strong:#2a2a30;--text:#f5f5f5;--muted:#8a8a93;--faint:#55555f;--cyan:#22d3ee;--blue:#60a5fa;--rust:#8B3A2E;--selection:#A8D8EA}
+  :root{--bg:#FAF9F6;--surface:#FFFFFF;--surface-2:#F2EDE6;--border:#e5e0d8;--border-strong:#d6d0c6;--text:#1a1a1a;--muted:#6b6b6b;--faint:#9a9a9a;--rust:#8B3A2E;--selection:#A8D8EA;--cyan:#0e7490;--green:#15803d}
+  [data-theme="rust"]{--bg:#8B3A2E;--surface:#6d2e24;--surface-2:#5a231c;--border:#8a3f34;--border-strong:#a14a3c;--text:#FFF5EB;--muted:#E8CFC5;--faint:#c9a89e;--selection:#A8D8EA;--cyan:#7dd3e0;--green:#86efac}
   *{margin:0;padding:0;box-sizing:border-box}
   ::selection{background:var(--selection);color:#0f172a}
-  body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.65;transition:background .35s,color .35s;-webkit-font-smoothing:antialiased}
   .mono{font-family:'JetBrains Mono',monospace}
-  .wrap{max-width:1100px;margin:0 auto;padding:28px 24px 60px}
-  .nav{position:sticky;top:0;z-index:20;background:rgba(10,10,11,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);margin:-28px -24px 32px;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
-  .nav a{font-size:13px;color:var(--muted);text-decoration:none;border:none}
-  .nav a:hover{color:white}
-  .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;margin-bottom:36px}
-  @media(max-width:900px){.hero{grid-template-columns:1fr}}
-  .badge{display:inline-flex;gap:8px;align-items:center;padding:4px 10px;border-radius:999px;background:#111113;border:1px solid #222227;font-size:11px;letter-spacing:0.08em;color:#8a8a93}
-  .dot{width:6px;height:6px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e}
-  h1{font-family:'Instrument Serif',serif;font-size:52px;line-height:1.05;font-weight:400;margin-top:14px}
-  .gradient{background:linear-gradient(to right,#60a5fa,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .desc{margin-top:16px;color:var(--muted);font-size:15px;line-height:1.7;max-width:560px}
-  .card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px}
-  .tag{padding:2px 8px;border-radius:999px;background:#0f1a14;border:1px solid rgba(34,197,94,0.2);font-size:10px;color:#86efac}
-  .tag-blue{background:#0f172a;border-color:rgba(96,165,250,0.2);color:#93c5fd}
-  .section-title{font-size:11px;letter-spacing:0.12em;color:var(--faint);margin-bottom:12px}
+  .wrap{max-width:1000px;margin:0 auto;padding:28px 24px 80px}
+  .nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 80%, transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);margin:-28px -24px 36px;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+  .nav a{font-size:13px;color:var(--muted);text-decoration:none;border-bottom:none;font-weight:500}
+  .nav a:hover{color:var(--text)}
+  .badge{display:inline-flex;gap:8px;align-items:center;padding:5px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--border);font-size:11px;letter-spacing:0.08em;color:var(--muted)}
+  .dot{width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e}
+  h1{font-family:'Instrument Serif',serif;font-size:52px;line-height:1.05;font-weight:400;margin-top:16px;letter-spacing:-0.02em}
+  .gradient{background:linear-gradient(to right,#2563eb,#06b6d4);-webkit-background-clip:text;background-clip:text;color:transparent}
+  [data-theme="rust"] .gradient{background:linear-gradient(to right,#93c5fd,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .desc{margin-top:18px;color:var(--muted);font-size:16px;line-height:1.75;max-width:620px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px;box-shadow:0 1px 8px rgba(0,0,0,0.04);transition:.3s}
+  [data-theme="rust"] .card{box-shadow:0 2px 12px rgba(0,0,0,0.2)}
+  .tag{padding:4px 10px;border-radius:999px;background:var(--surface-2);border:1px solid var(--border);font-size:11px;color:var(--text);font-weight:500}
+  .tag-green{background:#dcfce7;border-color:#bbf7d0;color:#166534}
+  [data-theme="rust"] .tag-green{background:#052e16;border-color:#166534;color:#86efac}
+  .tag-blue{background:#dbeafe;border-color:#bfdbfe;color:#1e40af}
+  [data-theme="rust"] .tag-blue{background:#172554;border-color:#1e3a8a;color:#93c5fd}
+  .section-title{font-size:11px;letter-spacing:0.14em;color:var(--faint);margin-bottom:12px;font-weight:600}
   .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  @media(max-width:600px){.grid-2{grid-template-columns:1fr}}
-  .item{border:1px solid var(--border);border-radius:12px;padding:12px;background:var(--surface)}
-  .item h4{font-size:13px;font-weight:600;margin-bottom:4px}
-  .item p{font-size:11px;color:var(--muted);line-height:1.5}
-  .repo-link{display:block;margin-top:20px;background:#0a0a0b;border:1px solid var(--border-strong);border-radius:12px;padding:14px;text-decoration:none}
-  .repo-link:hover{border-color:#3a3a44}
-  .repo-link .title{font-size:12px;color:white;display:flex;align-items:center;gap:8px}
-  .back{margin-top:40px;display:inline-flex;gap:8px;align-items:center;padding:8px 14px;border-radius:999px;border:1px solid var(--border);font-size:12px;color:var(--muted);text-decoration:none}
-  .back:hover{color:white;border-color:var(--border-strong)}
+  @media(max-width:700px){.grid-2{grid-template-columns:1fr} h1{font-size:40px}}
+  .item{border:1px solid var(--border);border-radius:14px;padding:14px;background:var(--surface);transition:.2s}
+  .item:hover{border-color:var(--border-strong);transform:translateY(-1px)}
+  .item h4{font-size:13px;font-weight:700;margin-bottom:5px;color:var(--text)}
+  .item p{font-size:12.5px;color:var(--muted);line-height:1.6}
+  .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px}
+  @media(max-width:900px){.hero{grid-template-columns:1fr}}
+  .repo-link{display:block;margin-top:0;background:var(--surface);border:1px solid var(--border-strong);border-radius:14px;padding:16px;text-decoration:none;transition:.2s}
+  .repo-link:hover{border-color:var(--text);transform:translateY(-1px)}
+  .repo-link .title{font-size:13px;color:var(--text);font-weight:700;display:flex;gap:8px}
+  .repo-link .desc-small{margin-top:6px;font-size:11.5px;color:var(--muted);line-height:1.5}
+  .theme-toggle{position:fixed;top:18px;right:22px;width:58px;height:32px;background:#fff;border:1px solid var(--border);border-radius:999px;cursor:pointer;display:flex;align-items:center;padding:3px;z-index:50;transition:.3s}
+  [data-theme="rust"] .theme-toggle{background:#5a231c;border-color:#5a231c}
+  .knob{width:26px;height:26px;background:#fff;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,0.18);transform:translateX(0);transition:transform .32s;display:grid;place-items:center}
+  [data-theme="rust"] .knob{transform:translateX(24px);background:#FFF5EB}
+  .knob-dot{width:8px;height:8px;border-radius:50%;background:var(--rust)}
+  .back{margin-top:40px;display:inline-flex;gap:8px;align-items:center;padding:9px 16px;border-radius:999px;border:1px solid var(--border);font-size:13px;color:var(--muted);text-decoration:none;font-weight:500;transition:.2s}
+  .back:hover{color:var(--text);border-color:var(--border-strong);background:var(--surface)}
+  .content-block{font-size:15.5px;line-height:1.8;color:var(--text);margin-bottom:18px}
+  .content-block strong{font-weight:700}
+  .methodology{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 </style>
 </head>
-<body>
+<body data-theme="light">
+<button class="theme-toggle" id="toggle"><span class="knob"><span class="knob-dot"></span></span></button>
 <div class="wrap">
   <div class="nav">
     <a href="index.html" class="mono">← vignesh / work</a>
-    <div style="display:flex;gap:16px"><a href="index.html">home</a><a href="https://github.com/vigneshsai7" target="_blank">github</a></div>
+    <div style="display:flex;gap:18px"><a href="index.html">home</a><a href="https://github.com/vigneshsai7" target="_blank">github</a></div>
   </div>
 
   <div class="hero">
     <div>
-      <div class="badge"><span class="dot"></span> LIVE INTERNSHIP • 2025 <span class="tag" style="margin-left:8px">PRODUCTION-READY</span></div>
+      <div class="badge"><span class="dot"></span> LIVE INTERNSHIP • 2025 <span class="tag tag-green" style="margin-left:8px">PRODUCTION-READY</span></div>
       <h1>AppSec & API <span class="gradient">Pentesting</span> Internship</h1>
       <p class="desc">End-to-end security lifecycle: from black-box IDOR discovery with CVSS scoring to BOLA fix verification, httpOnly JWT hardening, public API shielding, and CI DAST integration with OWASP ZAP.</p>
       
-      <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:8px">
-        <span class="tag">IDOR → BOLA</span><span class="tag-blue tag">CVSS 7.5</span><span class="tag">JWT httpOnly</span><span class="tag">OWASP ASVS L2</span><span class="tag">ZAP DAST</span><span class="tag">Next.js 14</span>
+      <div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:8px">
+        <span class="tag tag-green">IDOR → BOLA</span><span class="tag tag-blue">CVSS 7.5</span><span class="tag">JWT httpOnly</span><span class="tag">OWASP ASVS L2</span><span class="tag">ZAP DAST</span><span class="tag">Next.js 14</span>
+      </div>
+
+      <div style="margin-top:32px">
+        <div class="section-title">WHAT I SHIPPED</div>
+        <p class="content-block">During this internship I audited internal and client-facing APIs with a strong focus on authorization and business-logic testing. Built a repeatable methodology for API security reviews and automated parts of it with custom scripts.</p>
+        <div style="margin-top:14px;display:grid;gap:12px">
+          <div class="card"><p class="content-block" style="margin:0"><strong>Authorization testing:</strong> Enumerated object IDs, tested IDOR and BOLA across multi-tenant endpoints, validated horizontal/vertical privilege escalation.</p></div>
+          <div class="card"><p class="content-block" style="margin:0"><strong>JWT & session:</strong> Tested none-alg, weak secret, kid confusion, jku/x5u, token replay, and expiration bypasses.</p></div>
+          <div class="card"><p class="content-block" style="margin:0"><strong>Tooling:</strong> Built ZAP automation (auth scripts, active scan policies), Burp match/replace flows, and Postman + Newman collections for regression.</p></div>
+          <div class="card"><p class="content-block" style="margin:0"><strong>Reporting:</strong> Wrote proof-of-concepts with impact analysis and remediation PRs — not just CVSS scores.</p></div>
+        </div>
       </div>
 
       <div style="margin-top:28px" class="grid-2">
-        <div class="item"><h4>🔍 Vulnerability Discovery</h4><p>IDOR found via param tampering /user/{id}, exploited to access other users data. Documented with PoC curl, CVSS 7.5 High.</p></div>
-        <div class="item"><h4>🛡️ BOLA Remediation</h4><p>Fixed in middleware/authorization.ts — enforce owner check: token.userId must equal requested resource. Added Jest tests.</p></div>
-        <div class="item"><h4>🔐 JWT Hardening</h4><p>Migrated to httpOnly, Secure, SameSite=Strict cookies in lib/jwt.ts. Removed localStorage token exposure.</p></div>
-        <div class="item"><h4>🚀 Public API Shield</h4><p>Added rate limiting, method whitelist, CORS hardening in next.config.js. Public routes protected from abuse.</p></div>
+        <div class="item"><h4>🔍 Discovery</h4><p>IDOR via /user/{id} tampering, accessed other users data. PoC curl, CVSS 7.5 High.</p></div>
+        <div class="item"><h4>🛡️ BOLA Fix</h4><p>Enforced owner check in middleware/authorization.ts — token.userId == resource.</p></div>
+        <div class="item"><h4>🔐 JWT Hardening</h4><p>Migrated to httpOnly, Secure, SameSite=Strict cookies, removed localStorage exposure.</p></div>
+        <div class="item"><h4>🚀 API Shield</h4><p>Rate limiting, method whitelist, CORS hardening, public route protection.</p></div>
       </div>
 
-      <div style="margin-top:24px" class="card">
-        <div class="section-title">DEPLOYMENT</div>
-        <ul style="list-style:none;font-size:11px;color:var(--muted);line-height:1.8" class="mono">
-          <li>• Vercel: vercel --prod with env JWT_SECRET</li>
-          <li>• Headers via next.config.js + middleware</li>
-          <li>• DAST runs on every push to main</li>
-          <li>• Preview deployments scanned by ZAP baseline</li>
-        </ul>
+      <div style="margin-top:28px" class="card">
+        <div class="section-title">TOOLS & METHODOLOGY</div>
+        <p class="content-block" style="margin-bottom:14px">Aligned with OWASP API Security Top 10 2023. Every finding mapped to API1-API10 with reproducible steps.</p>
+        <div class="methodology">
+          <span class="tag">Burp Suite Pro</span><span class="tag">OWASP ZAP</span><span class="tag">Postman</span><span class="tag">Python</span><span class="tag">JWT_Tool</span><span class="tag">ffuf / Arjun</span><span class="tag">Docker</span><span class="tag">GitHub Actions</span>
+        </div>
       </div>
     </div>
 
-    <div>
+    <div style="display:flex;flex-direction:column;gap:16px">
       <div class="card">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><span class="mono" style="font-size:12px;font-weight:600">Repository</span><span class="mono" style="font-size:10px;color:#86efac;display:flex;align-items:center;gap:4px"><span style="width:6px;height:6px;border-radius:50%;background:#22c55e;display:inline-block"></span>ACTIVE</span></div>
-        <a href="https://github.com/vigneshsai7/appsec-api-pentesting" target="_blank" class="repo-link" style="margin-top:0">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><span class="mono" style="font-size:12px;font-weight:700">Repository</span><span class="mono" style="font-size:10px;color:var(--green);display:flex;align-items:center;gap:5px;font-weight:600"><span style="width:6px;height:6px;border-radius:50%;background:#22c55e;display:inline-block"></span>ACTIVE</span></div>
+        <a href="https://github.com/vigneshsai7/appsec-api-pentesting" target="_blank" class="repo-link">
           <div class="title">📁 vigneshsai7/appsec-api-pentesting ↗</div>
-          <div style="margin-top:6px;font-size:11px;color:var(--muted);line-height:1.5">IDOR discovery → BOLA fix → httpOnly JWT → Public shielding + ZAP DAST. Next.js 14, TypeScript, Jest.</div>
-          <div style="margin-top:10px;display:flex;gap:6px"><span class="tag">5 Tests</span><span class="tag-blue tag">MIT</span></div>
+          <div class="desc-small">IDOR discovery → BOLA fix → httpOnly JWT → Public shielding + ZAP DAST. Next.js 14, TypeScript, Jest.</div>
+          <div style="margin-top:12px;display:flex;gap:6px"><span class="tag tag-green">5 Tests</span><span class="tag tag-blue">MIT</span></div>
         </a>
         <div style="margin-top:12px" class="grid-2">
-          <a href="https://github.com/vigneshsai7/appsec-api-pentesting/blob/main/Vulnerability_Disclosure_Report.md" target="_blank" class="item" style="text-decoration:none;display:block"><h4 style="font-size:11px">📄 Disclosure Report</h4><p>CVSS • Timeline • PoC</p></a>
-          <a href="https://github.com/vigneshsai7/appsec-api-pentesting/actions" target="_blank" class="item" style="text-decoration:none;display:block"><h4 style="font-size:11px">⚙️ DAST Pipeline</h4><p>ZAP • Gitleaks</p></a>
+          <a href="https://github.com/vigneshsai7/appsec-api-pentesting/blob/main/Vulnerability_Disclosure_Report.md" target="_blank" class="item" style="text-decoration:none"><h4 style="font-size:11px">📄 Disclosure Report</h4><p>CVSS • Timeline • PoC</p></a>
+          <a href="https://github.com/vigneshsai7/appsec-api-pentesting/actions" target="_blank" class="item" style="text-decoration:none"><h4 style="font-size:11px">⚙️ DAST Pipeline</h4><p>ZAP • Gitleaks</p></a>
         </div>
-        <div style="margin-top:20px;border-top:1px solid var(--border);padding-top:12px;display:flex;justify-content:space-between;font-size:10px;color:var(--faint)" class="mono"><span>© 2025 vigneshsai7</span><span>OWASP ASVS L2</span></div>
       </div>
 
-      <div style="margin-top:16px" class="card">
-        <div class="section-title">TECH STACK</div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px">
-          <span class="item" style="padding:4px 8px;font-size:10px">Next.js 14</span>
-          <span class="item" style="padding:4px 8px;font-size:10px">TypeScript</span>
-          <span class="item" style="padding:4px 8px;font-size:10px">Jest 94% cov</span>
-          <span class="item" style="padding:4px 8px;font-size:10px">OWASP ZAP</span>
-          <span class="item" style="padding:4px 8px;font-size:10px">JWT</span>
-          <span class="item" style="padding:4px 8px;font-size:10px">BOLA</span>
+      <div class="card">
+        <div class="section-title">DEPLOYMENT</div>
+        <ul style="list-style:none;font-size:12px;color:var(--muted);line-height:2" class="mono">
+          <li>• Vercel: vercel --prod with JWT_SECRET</li>
+          <li>• Headers via next.config.js + middleware</li>
+          <li>• DAST runs on every push to main</li>
+          <li>• Preview deployments scanned by ZAP</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="section-title">HIGHLIGHTS</div>
+        <div class="grid-2">
+          <div class="item"><h4>5/5 Tests</h4><p>94.2% coverage, Jest</p></div>
+          <div class="item"><h4>CVSS 7.5</h4><p>High severity IDOR</p></div>
+          <div class="item"><h4>ASVS L2</h4><p>OWASP compliant</p></div>
+          <div class="item"><h4>CI/CD</h4><p>ZAP + Gitleaks</p></div>
         </div>
       </div>
     </div>
   </div>
 
   <a href="index.html" class="back">← Back to profile</a>
+  <div style="margin-top:32px;font-size:12px;color:var(--faint)" class="mono">© 2025 vigneshsai7 • Built for AppSec review • Hyderabad, India</div>
 </div>
+<script>
+const btn=document.getElementById('toggle');const body=document.body;
+const saved=localStorage.getItem('theme');if(saved)body.setAttribute('data-theme',saved);
+btn.onclick=()=>{const cur=body.getAttribute('data-theme');const next=cur==='light'?'rust':'light';body.setAttribute('data-theme',next);localStorage.setItem('theme',next);};
+</script>
 </body>
 </html>
